@@ -176,9 +176,9 @@ h1 em{font-style:normal;color:rgba(255,255,255,.45);}
           <div class="frow">
             <label>1 oyda marketing byudjeti?</label>
             <div class="opts" id="opts-bud">
-              <div class="opt" onclick="pick(this,'opts-bud')">$500 gacha</div>
-              <div class="opt" onclick="pick(this,'opts-bud')">$500–$1000</div>
-              <div class="opt" onclick="pick(this,'opts-bud')">$1000–$3000</div>
+              <div class="opt" onclick="pick(this,'opts-bud')">$1000 gacha</div>
+              <div class="opt" onclick="pick(this,'opts-bud')">$1500</div>
+              <div class="opt" onclick="pick(this,'opts-bud')">$2000$</div>
               <div class="opt" onclick="pick(this,'opts-bud')">$3000+</div>
             </div>
           </div>
@@ -230,11 +230,23 @@ document.getElementById('lead-form').addEventListener('submit',async e=>{
   }catch(err){btn.disabled=false;btn.textContent='Arizani yuborish →';alert('Xatolik. Qayta urining.');}
 });
 
-// PHONE MASK
-document.getElementById('inp-phone').addEventListener('input',e=>{
-  let v=e.target.value.replace(/[^\d+]/g,'');
-  if(v.length>0&&!v.startsWith('+'))v='+'+v;
-  e.target.value=v;
+// PHONE MASK — always keep +998 prefix
+const phoneInput = document.getElementById('inp-phone');
+phoneInput.addEventListener('focus', e => {
+  if(!e.target.value) e.target.value = '+998';
+});
+phoneInput.addEventListener('input', e => {
+  let v = e.target.value.replace(/[^\d+]/g,'');
+  if(!v.startsWith('+998')) {
+    v = '+998' + v.replace(/^\+?9?9?8?/, '');
+  }
+  if(v.length > 13) v = v.slice(0, 13);
+  e.target.value = v;
+});
+phoneInput.addEventListener('keydown', e => {
+  if((e.key === 'Backspace' || e.key === 'Delete') && phoneInput.value === '+998') {
+    e.preventDefault();
+  }
 });
 </script>
 </body>
