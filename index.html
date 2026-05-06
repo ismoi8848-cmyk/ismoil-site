@@ -134,8 +134,19 @@ h1 em{font-style:normal;color:rgba(255,255,255,.45);}
 @media (max-width:480px){
 
   .page{
-    padding:24px 12px 40px;
-  }
+  position:relative;
+  z-index:2;
+  padding:40px 12px 48px;
+  max-width:480px;
+  margin:0 auto;
+}
+
+/* DESKTOP FIX FOR EXPERTS SECTION */
+.experts-wrap{
+  max-width:480px;
+  margin:0 auto 12px;
+  width:100%;
+}
 
   .glass{
     margin-bottom:12px;
@@ -220,7 +231,7 @@ h1 em{font-style:normal;color:rgba(255,255,255,.45);}
     </div>
   </div>
 
-  <div class="glass reveal" style="transition-delay:.14s">
+  <div class="glass reveal experts-wrap" style="transition-delay:.14s">
     <div class="gi brands-inner">
       <div class="sec-lbl">Ishlagan brendlar</div>
       <div class="brands-grid">
