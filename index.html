@@ -272,7 +272,7 @@ document.getElementById('lead-form').addEventListener('submit',async e=>{
 document.getElementById('form-body').style.display='none';
     document.getElementById('success-msg').classList.add('show');
     
-    // 🎯 Facebook Pixel - Lead event
+ // 🎯 Facebook Pixel - Lead event
     if(typeof fbq !== 'undefined') {
       fbq('track', 'Lead', {
         content_name: 'Marketing Diagnostika',
@@ -280,8 +280,11 @@ document.getElementById('form-body').style.display='none';
         currency: 'USD'
       });
     }
-  }catch(err)
-  }catch(err){btn.disabled=false;btn.textContent='Arizani yuborish →';alert('Xatolik. Qayta urining.');}
+  } catch(err) {
+    btn.disabled = false;
+    btn.textContent = 'Arizani yuborish →';
+    alert('Xatolik. Qayta urining.');
+  }
 });
 
 // PHONE MASK — always keep +998 prefix
