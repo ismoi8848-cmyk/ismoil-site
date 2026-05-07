@@ -261,7 +261,10 @@ document.getElementById('lead-form').addEventListener('submit',async e=>{
   const phone=document.getElementById('inp-phone').value.trim();
   const dir=document.querySelector('#opts-dir .sel')?.textContent||'—';
   const bud=document.querySelector('#opts-bud .sel')?.textContent||'—';
-  if(!name||!phone)return;
+  if(!name || !phone || dir === '—' || bud === '—') {
+    alert('Iltimos, barcha savollarga javob bering (ism, telefon, yo\'nalish va byudjet).');
+    return;
+  }
   const btn=document.getElementById('submit-btn');
   btn.disabled=true;btn.textContent='Yuborilmoqda...';
   const text=`🎯 Yangi ariza!\n\n👤 Ism: ${name}\n📞 Telefon: ${phone}\n🏢 Yo'nalish: ${dir}\n💰 Byudjet: ${bud}`;
